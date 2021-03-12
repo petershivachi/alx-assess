@@ -2,9 +2,14 @@
 const routes = [
   {
     path: '/',
-    component: () => import('layouts/MainLayout.vue'),
+    component: () => import('layouts/Layout.vue'),
     children: [
-      { path: '', component: () => import('pages/Index.vue') }
+      { path: '/dashboard', component: () => import('pages/Dashboard.vue') },
+      { path: '/tasks', component: () => import('pages/Task.vue') },
+      { path: '/email', component: () => import('pages/Email.vue') },
+      { path: '/contacts', component: () => import('pages/Contacts.vue') },
+      { path: '/chat', component: () => import('pages/Chat.vue') },
+      { path: '/deals', component: () => import('pages/Deals.vue') }
     ]
   },
 
