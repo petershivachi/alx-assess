@@ -1,107 +1,44 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+  <q-layout view="lHh lpR fFf">
+    <q-header bordered conte>
       <q-toolbar>
-        <q-btn
+        <!-- <q-btn
           flat
           dense
           round
           icon="menu"
           aria-label="Menu"
           @click="leftDrawerOpen = !leftDrawerOpen"
-        />
+        /> -->
 
         <q-toolbar-title>
           Quasar App
         </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
+     <q-separator/>
 
     <q-drawer
       v-model="leftDrawerOpen"
       show-if-above
-      bordered
-      content-class="bg-grey-1"
-    >
+      elevated
+      :width="256"
+      content-class="#f5f6f8">
       <q-list>
         <q-item-label
-          header
-          class="text-grey-8"
-        >
+          header>
           Saas Kit
-        </q-item-label>
-       <q-item
-       to="/dashboard"
+        </q-item-label >
+       <q-item :key="nav.id" v-for="nav in navs"
+       :to="nav.to"
     clickable>
     <q-item-section
       avatar >
-      <q-icon name="dashboard" />
+      <q-icon :name="nav.icon" />
     </q-item-section>
 
     <q-item-section>
-      <q-item-label>Dashboard </q-item-label>
-    </q-item-section>
-  </q-item>
-    <q-item
-       to="/tasks"
-    clickable>
-    <q-item-section
-      avatar >
-      <q-icon name="splitscreen" />
-    </q-item-section>
-
-    <q-item-section>
-      <q-item-label>Tasks </q-item-label>
-    </q-item-section>
-  </q-item>
-    <q-item
-       to="/email"
-    clickable>
-    <q-item-section
-      avatar >
-      <q-icon name="mail_outline" />
-    </q-item-section>
-
-    <q-item-section>
-      <q-item-label>Email </q-item-label>
-    </q-item-section>
-  </q-item>
-    <q-item
-       to="/contacts"
-    clickable>
-    <q-item-section
-      avatar >
-      <q-icon name="perm_identity" />
-    </q-item-section>
-
-    <q-item-section>
-      <q-item-label>Contacts </q-item-label>
-    </q-item-section>
-  </q-item>
-    <q-item
-       to="/chat"
-    clickable>
-    <q-item-section
-      avatar >
-      <q-icon name="chat_bubble_outline" />
-    </q-item-section>
-
-    <q-item-section>
-      <q-item-label>Chart </q-item-label>
-    </q-item-section>
-  </q-item>
-    <q-item
-       to="/deals"
-    clickable>
-    <q-item-section
-      avatar >
-      <q-icon name="view_week" />
-    </q-item-section>
-
-    <q-item-section>
-      <q-item-label>Deals </q-item-label>
+      <q-item-label>{{nav.label}} </q-item-label>
     </q-item-section>
   </q-item>
       </q-list>
@@ -120,7 +57,55 @@ export default {
   data () {
     return {
       leftDrawerOpen: false,
+      navs: [
+        {
+          id: 1,
+          label: 'Dashboard',
+          icon: 'dashboard',
+          to: '/dashboard'
+        },
+        {
+          id:2,
+          label: 'Tasks',
+          icon: 'splitscreen',
+          to: '/tasks'
+        },
+        {
+          id:3,
+          label: 'Email',
+          icon: 'mail_outline',
+          to: '/email'
+        },
+        {
+          id: 4,
+          label: 'Contacts',
+          icon: 'perm_identity',
+          to: '/contacts'
+        },
+        {
+          id: 5,
+          label: 'Chat',
+          icon: 'chat_bubble_outline',
+          to: '/chat'
+        },
+        {
+          id: 6,
+          label: 'Deals',
+          icon: 'view_week',
+          to: '/deals'
+        },
+      ]
     }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.q-drawer {
+  width: 256px;
+  height: 850px;
+  padding: 17px 0 22px;
+  box-shadow: 6px 0 18px 0 rgba(0, 0, 0, 0.06);
+  background-color: #ffffff;
+}
+</style>
