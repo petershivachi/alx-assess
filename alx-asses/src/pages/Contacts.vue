@@ -7,14 +7,13 @@
     <contact
     :key="key"
     :contact="contact"
-    id="key" 
+    :id="key" 
     v-for="(contact, key) in contacts"></contact>
     </q-list>
   </q-page>
 </template>
 
 <script>
-import Contact from 'components/Contacts/Contact.vue';
 import { mapGetters } from 'vuex';
 
 

@@ -1,6 +1,6 @@
 <template>
    <q-item
-        @click="contact.completed = !contact.selected"
+        @click="updateContact({id: id, updates :{ selected: !contact.selected }})"
         :class="!contact.selected ? 'bg-grey-light' : 'bg-blue-1'"
         clickable
         v-ripple
@@ -8,7 +8,8 @@
         <q-item-section side top>
           <q-checkbox 
           color="light-blue"
-          v-model="contact.selected" />
+          :value="contact.selected"
+          class="no-pointer-events" />
         </q-item-section>
 
         <q-item-section>
@@ -56,8 +57,13 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
-  props: ['contact', 'id']
+  props: ['contact', 'id'],
+  methods: {
+    ...mapActions('contacts', ['updateContact'])
+  }
   
 }
 </script>
