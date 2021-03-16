@@ -91,9 +91,18 @@ const state = {
   }
 }
 
-const mutations = {}
+const mutations = {
+  updateContact(state, payload){
+    console.log('payload (from mutation):', payload);
+    Object.assign(state.contacts[payload.id], payload.updates)
+  }
+}
 
-const actions = {}
+const actions = {
+  updateContact({ commit }, payload){
+    commit('updateContact', payload)
+  }
+}
 
 const getters = {
  contacts: (state) => {
