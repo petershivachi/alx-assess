@@ -10,13 +10,13 @@
           aria-label="Menu"
           icon="menu"
           class="q-mx-md"
-        />  
+        />
         <div style="max-width: 450px">
           <div>
             <div>
               <q-badge color="white">Model: "{{ search }}"</q-badge>
             </div>
-            <q-input v-model="search"  placeholder="Global Search">
+            <q-input v-model="search" placeholder="Global Search">
               <template v-slot:append>
                 <q-icon name="search" />
               </template>
@@ -24,7 +24,7 @@
           </div>
         </div>
 
-         <q-space />
+        <q-space />
 
         <div class="q-gutter-sm row items-center no-wrap">
           <q-btn round dense flat color="grey-8" icon="notifications">
@@ -41,10 +41,11 @@
       v-model="leftDrawerOpen"
       show-if-above
       bordered
-       behavior="desktop"
+      behavior="desktop"
       @click="leftDrawerOpen = false"
       :width="256"
-      content-class="#f5f6f8">
+      content-class="#f5f6f8"
+    >
       <q-list>
         <q-item-label header>Saas Kit</q-item-label>
         <q-item :key="nav.id" v-for="nav in navs" :to="nav.to" clickable>
@@ -62,33 +63,21 @@
       <router-view />
 
       <q-page-sticky
-       v-if="$q.screen.gt.sm"
-       behaviour="mobile"
-       position="top-left" :offset="[18, 18]" 
-       expand>
+        v-if="$q.screen.gt.sm"
+        behaviour="mobile"
+        position="top-left"
+        :offset="[18, 18]"
+        expand
+      >
         <div class="fit q-pt-xl q-px-sm column">
-          <q-btn round flat color="grey-8" stack no-caps size="26px" class="GPL__side-btn">
-            <q-icon size="22px" name="dashboard" />
-          </q-btn>
-
-          <q-btn round flat color="grey-8" stack no-caps size="26px" class="GPL__side-btn">
-            <q-icon size="22px" name="splitscreen" />
-          </q-btn>
-
-          <q-btn round flat color="grey-8" stack no-caps size="26px" class="GPL__side-btn">
-            <q-icon size="22px" name="mail_outline" />
-          </q-btn>
-
-          <q-btn round flat color="grey-8" stack no-caps size="26px" class="GPL__side-btn">
-            <q-icon size="22px" name="perm_identity" />
-          </q-btn>
-
-          <q-btn round flat color="grey-8" stack no-caps size="26px" class="GPL__side-btn">
-            <q-icon size="22px" name="chat_bubble_outline" />
-          </q-btn>
-          <q-btn round flat color="grey-8" stack no-caps size="26px" class="GPL__side-btn">
-            <q-icon size="22px" name="view_week" />
-          </q-btn>
+          <q-list>
+            <q-item-label header>Saas Kit</q-item-label>
+            <q-item :key="nav.id" v-for="nav in navs" :to="nav.to" clickable>
+              <q-item-section avatar>
+                <q-icon :name="nav.icon" />
+              </q-item-section>
+            </q-item>
+          </q-list>
         </div>
       </q-page-sticky>
     </q-page-container>
@@ -180,5 +169,4 @@ export default {
   @media (min-width: 1024px)
     &__page-container
       padding-left: 94px
-      
 </style>
