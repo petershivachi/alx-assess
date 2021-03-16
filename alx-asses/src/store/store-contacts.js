@@ -1,6 +1,7 @@
 const state = {
   contacts: {
     'ID1': {
+      img: 'https://cdn.quasar.dev/img/avatar1.jpg',
       name: 'Lindsey Stroud', 
       email: 'lindseystroud@gmail.com',     company: 'Hatchback', 
       role: 'Manager', 
@@ -9,6 +10,7 @@ const state = {
       selected: false 
     },
     'ID2': {
+      img: 'https://cdn.quasar.dev/img/avatar2.jpg',
       name: 'Nicci Troiani',
      email: 'nicci.toriani@gmail.com',
      company: 'Slack',
@@ -18,7 +20,8 @@ const state = {
      selected: false
     },
     'ID3': {
-      name: 'George fields',
+      img: 'https://cdn.quasar.dev/img/avatar4.jpg',
+      name: 'George Fields',
       email: 'george.fields@gmail.com',
       company: 'Clockify',
       role: 'CEO',
@@ -27,6 +30,7 @@ const state = {
       selected: false
     },
     'ID4': {
+      img: 'https://cdn.quasar.dev/img/avatar3.jpg',
       name: 'Rebecca More',
       email: 'rebecca.moore@gmail.com',
       company: 'Upwork',
@@ -36,6 +40,7 @@ const state = {
       selected: false
     },
     'ID5': {
+      img: 'https://cdn.quasar.dev/img/avatar6.jpg',
       name: 'Jane Doe',
       email: 'jane.doe@gmail.com',
       company: 'Trello',
@@ -45,6 +50,7 @@ const state = {
       selected: true
     },
     'ID6': {
+      img: 'https://randomuser.me/api/portraits/men/53.jpg',
       name: 'Jones Dermot',
       email: 'dermot.johnes@gmail.com',
       company: 'Slack',
@@ -54,6 +60,8 @@ const state = {
       selected: false
     },
     'ID7': {
+      img: 'https://randomuser.me/api/portraits/men/34.jpg',
+      name: 'Martin Merces',
       email: 'martin.merces@gmail.com',
       company: 'Google',
       role: 'Manager',
@@ -62,6 +70,7 @@ const state = {
       selected: false
     },
     'ID8': {
+      img: 'https://randomuser.me/api/portraits/men/11.jpg',
       name: 'Franz Ferdinand',
       email: 'franz.ferdinand@gmail.com',
       company: 'Facebook',
@@ -71,6 +80,7 @@ const state = {
       selected: false   
     },
     'ID9': {
+     img: 'https://randomuser.me/api/portraits/men/71.jpg',
      name: 'John Smith',
      email: 'john.smith@gmail.com',
      company: 'Skype',
@@ -80,6 +90,7 @@ const state = {
      selected: false
     },
     'ID10': {
+      img: 'https://randomuser.me/api/portraits/women/85.jpg',
       name: 'Judith Williams',
       email: 'judith.wiliams@gmail.com',
       company: 'Google',
