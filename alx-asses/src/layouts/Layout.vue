@@ -1,7 +1,16 @@
 <template>
   <q-layout view="lHh lpR fFf">
-    <q-header bordered seperator>
+    <q-header bordered seperator class="bg-white text-grey-8" height-hint="64">
       <q-toolbar color="bg-secondary" seperator>
+        <q-btn
+          flat
+          dense
+          round
+          @click="leftDrawerOpen = !leftDrawerOpen"
+          aria-label="Menu"
+          icon="menu"
+          class="q-mx-md"
+        />  
         <div style="max-width: 450px">
           <div>
             <div>
@@ -14,14 +23,26 @@
             </q-input>
           </div>
         </div>
+
+         <q-space />
+
+        <div class="q-gutter-sm row items-center no-wrap">
+          <q-btn round dense flat color="grey-8" icon="notifications">
+            <q-badge color="red" text-color="white" floating>
+              2
+            </q-badge>
+            <q-tooltip>Notifications</q-tooltip>
+          </q-btn>
+        </div>
       </q-toolbar>
     </q-header>
 
     <q-drawer
       v-model="leftDrawerOpen"
       show-if-above
-      seperator
       bordered
+       behavior="desktop"
+      @click="leftDrawerOpen = false"
       :width="256"
       content-class="#f5f6f8">
       <q-list>
@@ -37,15 +58,46 @@
       </q-list>
     </q-drawer>
 
-    <q-page-container>
+    <q-page-container class="GPL__page-container">
       <router-view />
+
+      <q-page-sticky
+       v-if="$q.screen.gt.sm"
+       behaviour="mobile"
+       position="top-left" :offset="[18, 18]" 
+       expand>
+        <div class="fit q-pt-xl q-px-sm column">
+          <q-btn round flat color="grey-8" stack no-caps size="26px" class="GPL__side-btn">
+            <q-icon size="22px" name="dashboard" />
+          </q-btn>
+
+          <q-btn round flat color="grey-8" stack no-caps size="26px" class="GPL__side-btn">
+            <q-icon size="22px" name="splitscreen" />
+          </q-btn>
+
+          <q-btn round flat color="grey-8" stack no-caps size="26px" class="GPL__side-btn">
+            <q-icon size="22px" name="mail_outline" />
+          </q-btn>
+
+          <q-btn round flat color="grey-8" stack no-caps size="26px" class="GPL__side-btn">
+            <q-icon size="22px" name="perm_identity" />
+          </q-btn>
+
+          <q-btn round flat color="grey-8" stack no-caps size="26px" class="GPL__side-btn">
+            <q-icon size="22px" name="chat_bubble_outline" />
+          </q-btn>
+          <q-btn round flat color="grey-8" stack no-caps size="26px" class="GPL__side-btn">
+            <q-icon size="22px" name="view_week" />
+          </q-btn>
+        </div>
+      </q-page-sticky>
     </q-page-container>
   </q-layout>
 </template>
 
 <script>
 export default {
-  name: "MainLayout",
+  name: "Layout",
 
   data() {
     return {
@@ -94,10 +146,39 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.q-drawer {
-  .q-router-link--exact-active {
-    color: #109cf1 !important;
-  }
-}
+<style lang="sass" scoped>
+.GPL
+  &__toolbar
+    height: 64px
+  &__toolbar-input
+    width: 35%
+  &__drawer-item
+    line-height: 24px
+    border-radius: 0 24px 24px 0
+    margin-right: 12px
+    .q-item__section--avatar
+      padding-left: 12px
+      .q-icon
+        color: #5f6368
+    .q-item__label:not(.q-item__label--caption)
+      color: #3c4043
+      letter-spacing: .01785714em
+      font-size: .875rem
+      font-weight: 500
+      line-height: 1.25rem
+    &--storage
+      border-radius: 0
+      margin-right: 0
+      padding-top: 24px
+      padding-bottom: 24px
+  &__side-btn
+    &__label
+      font-size: 12px
+      line-height: 24px
+      letter-spacing: .01785714em
+      font-weight: 500
+  @media (min-width: 1024px)
+    &__page-container
+      padding-left: 94px
+      
 </style>
