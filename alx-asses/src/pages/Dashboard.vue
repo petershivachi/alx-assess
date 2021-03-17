@@ -15,16 +15,27 @@
             <div class="col q-col-gutter-sm q-ma-xs q-mr-sm">
               <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <q-card>
-                  <q-card-section
-                    class="grey"
-                  >
+                  <q-card-section class="grey">
                     <div class="row">
                       <div class="col-10">
                         <div class="text-h6">Send benefit review by Sunday</div>
                         <div>Due date: <span>December 23, 2018</span></div>
+                        <q-card-section class="flex">
+                          <q-avatar>
+                            <img src="https://cdn.quasar.dev/img/avatar6.jpg" />
+                          </q-avatar>
+                          <q-item-label class="text-center">
+                            George Fields
+                          </q-item-label>
+                        </q-card-section>
                       </div>
                       <div class="col-2">
-                        <q-icon size="62px" name="trending_up" />
+                        <p>Reminder</p>
+                        <q-btn
+                          class="bottom"
+                          color="secondary"
+                          label="Secondary"
+                        />
                       </div>
                     </div>
                   </q-card-section>
@@ -32,17 +43,27 @@
               </div>
               <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <q-card>
-                  <q-card-section
-                    :class="$q.dark.isActive ? 'green_dark' : 'bg-green-8'"
-                    class="text-white"
-                  >
+                  <q-card-section class="grey">
                     <div class="row">
                       <div class="col-10">
-                        <div class="text-h6">Goals</div>
-                        <div class="text-h5">140</div>
+                        <div class="text-h6">Invite to office meet-up</div>
+                        <div>Due date: <span>December 23, 2018</span></div>
+                        <q-card-section class="flex">
+                          <q-avatar>
+                            <img src="https://cdn.quasar.dev/img/avatar6.jpg" />
+                          </q-avatar>
+                          <q-item-label class="text-center">
+                            George Fields
+                          </q-item-label>
+                        </q-card-section>
                       </div>
                       <div class="col-2">
-                        <q-icon size="62px" name="far fa-dot-circle" />
+                        <p>Call</p>
+                        <q-btn
+                          class="bottom"
+                          color="secondary"
+                          label="Secondary"
+                        />
                       </div>
                     </div>
                   </q-card-section>
@@ -50,20 +71,25 @@
               </div>
               <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <q-card>
-                  <q-card-section
-                    :class="$q.dark.isActive ? 'orange_dark' : 'bg-orange-9'"
-                    class="text-white"
-                  >
+                  <q-card-section class="grey">
                     <div class="row">
                       <div class="col-10">
-                        <div class="text-h6">% Change</div>
-                        <div class="text-h5">
-                          <q-icon name="arrow_downward" />
-                          2%
-                        </div>
+                        <div class="text-h6">Office meet-up</div>
+                        <div>Due date: <span>December 23, 2018</span></div>
+                        <q-card-section class="flex">
+                          <q-avatar>
+                            <img src="https://cdn.quasar.dev/img/avatar6.jpg" />
+                          </q-avatar>
+                          <q-item-label class="text-center">
+                            George Fields
+                          </q-item-label>
+                        </q-card-section>
                       </div>
                       <div class="col-2">
-                        <q-icon size="62px" name="compare_arrows" />
+                        <p>Event</p>
+                        <q-btn class="bottom" color="secondary"
+                          >completed</q-btn
+                        >
                       </div>
                     </div>
                   </q-card-section>
@@ -78,17 +104,7 @@
           <q-card flat bordered class="">
             <q-card-section class="row">
               <div class="text-h6 col-12">
-                Market Share & Growth
-                <q-btn
-                  flat
-                  dense
-                  icon="fas fa-download"
-                  class="float-right"
-                  @click="SaveImage('line')"
-                  :color="!$q.dark.isActive ? 'grey-8' : 'white'"
-                >
-                  <q-tooltip>Download</q-tooltip>
-                </q-btn>
+                Deals
               </div>
             </q-card-section>
 
@@ -108,29 +124,14 @@
           <q-card flat bordered class="">
             <q-card-section class="row">
               <div class="text-h6 col-12">
-                Sales vs Quota
-                <q-btn
-                  flat
-                  dense
-                  icon="fas fa-download"
-                  class="float-right"
-                  @click="SaveImage('gauge')"
-                  :color="!$q.dark.isActive ? 'grey-8' : 'white'"
-                >
-                  <q-tooltip>Download</q-tooltip>
-                </q-btn>
+                Tasks
               </div>
             </q-card-section>
 
             <q-separator inset></q-separator>
 
             <q-card-section>
-              <IEcharts
-                :option="gaugeOptions"
-                ref="gauge"
-                :resizable="true"
-                style="height:220px"
-              />
+              <apexchart type="radialBar" height="300" :options="chartOptions" :series="series" />
             </q-card-section>
           </q-card>
         </div>
@@ -144,94 +145,90 @@ import Vue from "vue";
 import IEcharts from "vue-echarts-v3/src/full.js";
 import { exportFile } from "quasar";
 Vue.component("IEcharts", IEcharts);
-function wrapCsvValue(val, formatFn) {
-  let formatted = formatFn !== void 0 ? formatFn(val) : val;
-  formatted =
-    formatted === void 0 || formatted === null ? "" : String(formatted);
-  formatted = formatted.split('"').join('""');
-  return `"${formatted}"`;
-}
+import VueApexCharts from 'vue-apexcharts'
+Vue.use(VueApexCharts);
+ 
+Vue.component('apexchart', VueApexCharts);
+
 export default {
   data() {
     return {
-      gaugeOptions: {
-        tooltip: {
-          formatter: "{a} <br/>{b} : {c}%"
+      series: [60],
+      chartOptions: {
+        chart: {
+          toolbar: {
+            show: true
+          }
         },
-        series: [
-          {
-            type: "gauge",
-            name: "Sale",
-            detail: { formatter: "{value}%" },
-            data: [{ value: 30 }],
-            min: 0,
-            radius: "100%",
-            axisLine: {
-              show: true,
-              lineStyle: {
-                color: [
-                  [0.35, "#293c55"],
-                  [0.65, "#61a0a8"],
-                  [1, "#c23731"]
-                ],
-                width: 20
+        title: {
+          text: 'Radial Bar',
+          align: 'left',
+          style: {
+            color: '#FFF'
+          }
+        },
+        plotOptions: {
+          radialBar: {
+            startAngle: -135,
+            endAngle: 225,
+            hollow: {
+              margin: 0,
+              size: '80%',
+              background: '#fff',
+             
+              dropShadow: {
+                enabled: true,
+                top: 3,
+                left: 0,
+                blur: 4,
+                opacity: 0.24
+              }
+            },
+            track: {
+              background: 'green',
+              strokeWidth: '67%',
+              margin: 0, // margin is in pixels
+              dropShadow: {
+                enabled: true,
+                top: -3,
+                left: 0,
+                blur: 4,
+                opacity: 0.35
+              }
+            },
+            dataLabels: {
+              name: {
+                show: false
+              },
+              value: {
+                formatter: function (val) {
+                  return val + '%'
+                },
+                color: 'green',
+                fontSize: '36px',
+                show: true,
+                // offsetY: 13
               }
             }
           }
-        ]
+        },
+        fill: {
+          gradient: {
+            shade: 'light',
+            type: 'horizontal',
+            inverseColors: false,
+            opacityFrom: 1,
+            opacityTo: 1,
+            stops: [0, 100]
+          }
+        },
+        stroke: {
+          lineCap: 'round'
+        }
       }
     };
   },
   computed: {
-    barOptions() {
-      return {
-        grid: {
-          bottom: "20%",
-          left: "15%",
-          top: "3%"
-        },
-        legend: {
-          bottom: 0,
-          textStyle: {
-            color: this.$q.dark.isActive ? "white" : "#676767"
-          }
-        },
-        tooltip: {},
-        dataset: {
-          dimensions: ["time_period", "sale", "goal"],
-          source: [
-            { time_period: "Jan 2019", sale: 50, goal: 70 },
-            { time_period: "Feb 2019", sale: 80, goal: 75 },
-            { time_period: "Mar 2019", sale: 86, goal: 80 },
-            { time_period: "Apr 2019", sale: 72, goal: 85 }
-          ]
-        },
-        xAxis: {
-          type: "category",
-          // axisLabel: {
-          //     rotate: 45
-          // }
-          axisLabel: {
-            color: this.$q.dark.isActive ? "white" : "#676767"
-          }
-        },
-        yAxis: {
-          // name: 'Goal',
-          // nameLocation: 'center',
-          // nameGap: 30,
-          // nameTextStyle:{
-          //     fontWeight: 'bold'
-          // }
-          axisLabel: {
-            color: this.$q.dark.isActive ? "white" : "#676767"
-          }
-        },
-        series: [
-          { type: "bar", name: "Sales" },
-          { type: "bar", name: "Goals" }
-        ]
-      };
-    },
     lineChartOption() {
       return {
         grid: {
@@ -291,7 +288,7 @@ export default {
         legend: {
           orient: "horizontal",
           bottom: 0,
-          width: 300,
+          width: 30,
           textStyle: {
             color: this.$q.dark.isActive ? "white" : "#676767"
           }
