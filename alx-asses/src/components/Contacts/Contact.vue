@@ -1,5 +1,7 @@
 <template>
-  <q-item
+  <div>
+    <ContactHeader/>
+    <q-item
     @click="updateContact({ id: id, updates: { selected: !contact.selected } })"
     :class="!contact.selected ? 'bg-grey-light' : 'bg-blue-1'"
     clickable
@@ -12,7 +14,7 @@
         class="no-pointer-events"
       />
     </q-item-section>
-     <q-item-section avatar>
+    <q-item-section avatar>
       <q-avatar>
         <img :src="contact.img" />
       </q-avatar>
@@ -49,6 +51,7 @@
       </q-item-label>
     </q-item-section>
   </q-item>
+  </div>
 </template>
 
 <script>

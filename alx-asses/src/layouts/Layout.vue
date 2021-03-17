@@ -24,7 +24,6 @@
           <div style="max-width: 450px">
             <div>
               <div>
-                <q-badge color="white">Model: "{{ search }}"</q-badge>
               </div>
               <q-input borderless v-model="search" placeholder="Global Search">
                 <template v-slot:append>

@@ -13,7 +13,7 @@
 import Button from './Button';
 
 export default {
-name: 'Header',
+name: 'ContactHeader',
 props: {
   title: String,
   showAddTask: Boolean
