@@ -263,15 +263,17 @@ export default {
             color: this.$q.dark.isActive ? "white" : "#676767"
           }
         },
-        yAxis: {
-          axisLabel: {
-            formatter: function(value, index) {
-              return value;
-            },
-            color: this.$q.dark.isActive ? "white" : "#676767"
-          }
-        },
-        series: [{ type: "line", name: "Share" }]
+        // yAxis: {
+        //   axisLabel: {
+        //     formatter: function(value, index) {
+        //       return value;
+        //     },
+        //     color: this.$q.dark.isActive ? "white" : "#676767"
+        //   }
+        //},
+        series: [{
+          data: [0, 50, 100, 150, 200, 250]
+        }]
       };
     }
   },
