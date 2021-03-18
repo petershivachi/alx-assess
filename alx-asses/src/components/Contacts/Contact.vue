@@ -1,7 +1,7 @@
 <template>
   <div>
-    <ContactHeader/>
     <q-item
+    class="q-ma-xs q-mr-sm"
     @click="updateContact({ id: id, updates: { selected: !contact.selected } })"
     :class="!contact.selected ? 'bg-grey-light' : 'bg-blue-1'"
     clickable
@@ -25,27 +25,27 @@
         {{ contact.name }}
       </q-item-label>
     </q-item-section>
-    <q-item-section>
+    <q-item-section class="mobile-hide">
       <q-item-label caption>
         {{ contact.email }}
       </q-item-label>
     </q-item-section>
-    <q-item-section>
+    <q-item-section class="mobile-hide">
       <q-item-label caption>
         {{ contact.company }}
       </q-item-label>
     </q-item-section>
-    <q-item-section>
+    <q-item-section class="mobile-hide">
       <q-item-label caption>
         {{ contact.role }}
       </q-item-label>
     </q-item-section>
-    <q-item-section>
+    <q-item-section class="mobile-hide">
       <q-item-label caption>
         {{ contact.forecast }}
       </q-item-label>
     </q-item-section>
-    <q-item-section>
+    <q-item-section class="mobile-hide">
       <q-item-label caption>
         {{ contact.activity }}
       </q-item-label>

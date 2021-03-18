@@ -8,9 +8,17 @@
               8 tasks completed out of 10
             </div>
           </q-card-section>
-
+          <q-card-section>
+            <q-linear-progress
+              :value="progress"
+              color="secondary"
+              class="q-mt-sm"
+            />
+          </q-card-section>
+          <q-card-section>
+            <p class="text-weight-medium">23 December, Sunday</p>
+          </q-card-section>
           <q-separator inset></q-separator>
-
           <q-card-section class="bg-grey-2">
             <div class="col q-col-gutter-sm q-ma-xs q-mr-sm">
               <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -131,7 +139,12 @@
             <q-separator inset></q-separator>
 
             <q-card-section>
-              <apexchart type="radialBar" height="300" :options="chartOptions" :series="series" />
+              <apexchart
+                type="radialBar"
+                height="300"
+                :options="chartOptions"
+                :series="series"
+              />
             </q-card-section>
           </q-card>
         </div>
@@ -143,28 +156,30 @@
 <script>
 import Vue from "vue";
 import IEcharts from "vue-echarts-v3/src/full.js";
-import { exportFile } from "quasar";
+
 Vue.component("IEcharts", IEcharts);
-import VueApexCharts from 'vue-apexcharts'
+import VueApexCharts from "vue-apexcharts";
 Vue.use(VueApexCharts);
- 
-Vue.component('apexchart', VueApexCharts);
+
+Vue.component("apexchart", VueApexCharts);
 
 export default {
   data() {
     return {
+      date: "2019/02/01",
+      progress: 0.75,
       series: [60],
       chartOptions: {
         chart: {
           toolbar: {
-            show: true
+            show: false
           }
         },
         title: {
-          text: 'Radial Bar',
-          align: 'left',
+          text: "",
+          align: "left",
           style: {
-            color: '#FFF'
+            color: ""
           }
         },
         plotOptions: {
@@ -173,9 +188,8 @@ export default {
             endAngle: 225,
             hollow: {
               margin: 0,
-              size: '80%',
-              background: '#fff',
-             
+              size: "80%",
+              background: "#fff",
               dropShadow: {
                 enabled: true,
                 top: 3,
@@ -185,9 +199,9 @@ export default {
               }
             },
             track: {
-              background: 'green',
-              strokeWidth: '67%',
-              margin: 0, // margin is in pixels
+              background: "green",
+              strokeWidth: "67%",
+              margin: 0,
               dropShadow: {
                 enabled: true,
                 top: -3,
@@ -201,29 +215,19 @@ export default {
                 show: false
               },
               value: {
-                formatter: function (val) {
-                  return val + '%'
+                formatter: function(val) {
+                  return val + "%";
                 },
-                color: 'green',
-                fontSize: '36px',
+                color: "green",
+                fontSize: "36px",
                 show: true,
-                // offsetY: 13
+                offsetY: 13
               }
             }
           }
         },
-        fill: {
-          gradient: {
-            shade: 'light',
-            type: 'horizontal',
-            inverseColors: false,
-            opacityFrom: 1,
-            opacityTo: 1,
-            stops: [0, 100]
-          }
-        },
         stroke: {
-          lineCap: 'round'
+          lineCap: "round"
         }
       }
     };
@@ -242,26 +246,19 @@ export default {
             color: this.$q.dark.isActive ? "white" : "#676767"
           }
         },
-        tooltip: {
-          // formatter:
-          //     function (param) {
-          //     console.log(param)
-          //     // return param.seriesName + '<br />' + param.name + ': ';
-          // }
-        },
         dataset: {
-          dimensions: ["product_name", "share", "growth"],
+          dimensions: ["date", "deals"],
           source: [
-            { product_name: "Product A", share: 20, growth: 25 },
-            { product_name: "Product B", share: 22, growth: 18 },
-            { product_name: "Product C", share: 40, growth: 45 }
+            { date: "1 Dec", deals: 20 },
+            { date: "8 Dec", deals: 22 },
+            { date: "31 Dec", deals: 40 }
           ]
+        },
+        stroke: {
+          curve: "smooth",
         },
         xAxis: {
           type: "category",
-          // axisLabel: {
-          //     rotate: 45
-          // }
           axisLabel: {
             color: this.$q.dark.isActive ? "white" : "#676767"
           }
@@ -269,105 +266,18 @@ export default {
         yAxis: {
           axisLabel: {
             formatter: function(value, index) {
-              return value + " %";
+              return value;
             },
             color: this.$q.dark.isActive ? "white" : "#676767"
           }
         },
-        series: [
-          { type: "line", name: "Share" },
-          { type: "line", name: "Growth" }
-        ]
-      };
-    },
-    pieOptions() {
-      return {
-        tooltip: {
-          show: true
-        },
-        legend: {
-          orient: "horizontal",
-          bottom: 0,
-          width: 30,
-          textStyle: {
-            color: this.$q.dark.isActive ? "white" : "#676767"
-          }
-        },
-        series: [
-          {
-            name: "Competitor",
-            type: "pie",
-            radius: ["40%", "70%"],
-            avoidLabelOverlap: false,
-            label: {
-              normal: {
-                show: true,
-                position: "inner",
-                formatter: function(param, index) {
-                  return param.value + " %";
-                }
-              },
-              emphasis: {
-                show: true,
-                textStyle: {
-                  fontSize: "20",
-                  fontWeight: "bold"
-                }
-              }
-            },
-            labelLine: {
-              normal: {
-                show: false
-              }
-            },
-            selectedMode: "single",
-            data: [
-              { value: 40, name: "Product 1", selected: true },
-              { value: 20, name: "Competitor 1", selected: false },
-              { value: 15, name: "Competitor 2", selected: false },
-              { value: 25, name: "Competitor 3", selected: false }
-            ]
-          }
-        ]
+        series: [{ type: "line", name: "Share" }]
       };
     }
   },
   methods: {
-    SaveImage(type) {
-      const linkSource = this.$refs[type].getDataURL();
-      const downloadLink = document.createElement("a");
-      document.body.appendChild(downloadLink);
-      downloadLink.href = linkSource;
-      downloadLink.target = "_self";
-      downloadLink.download = type + ".png";
-      downloadLink.click();
-    },
-    exportTable() {
-      // naive encoding to csv format
-      const content = [this.columns.map(col => wrapCsvValue(col.label))]
-        .concat(
-          this.data.map(row =>
-            this.columns
-              .map(col =>
-                wrapCsvValue(
-                  typeof col.field === "function"
-                    ? col.field(row)
-                    : row[col.field === void 0 ? col.name : col.field],
-                  col.format
-                )
-              )
-              .join(",")
-          )
-        )
-        .join("\r\n");
-      const status = exportFile("activity.csv", content, "text/csv");
-      if (status !== true) {
-        this.$q.notify({
-          message: "Browser denied file download...",
-          color: "negative",
-          icon: "warning"
-        });
-      }
+    randomize() {
+      this.progress = Math.random();
     }
   }
 };
