@@ -2,7 +2,7 @@
   <div class="q-pa-md">
     <q-layout
       container
-      style="height: 800px"
+      style="height: 850px"
       class="shadow-2 rounded-borders"
       view="hHh lpR fFf"
     >
@@ -131,7 +131,7 @@ export default {
   },
   data() {
     return {
-      leftDrawerOpen: false,
+      leftDrawerOpen: true,
       miniState: true,
       search: "",
       navs: [
