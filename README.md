@@ -25,5 +25,5 @@ npm run build
 See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
 
 ### Screenshots
-## Contacts Page 
-![Contacts Image](alx-assess/images/contacts1.png)
+#### Contacts Page 
+![contacts1](https://user-images.githubusercontent.com/58518220/111697922-3f3dc380-8847-11eb-873d-7c5ba09c243a.png)
