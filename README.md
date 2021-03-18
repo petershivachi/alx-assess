@@ -26,4 +26,4 @@ See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
 
 ### Screenshots
 ## Contacts Page 
-![Contacts Image](alx-assess/images/contacts.png)
+![Contacts Image](alx-assess/images/contacts1.png)
