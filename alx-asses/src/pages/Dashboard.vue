@@ -32,18 +32,20 @@
                           <q-avatar>
                             <img src="https://cdn.quasar.dev/img/avatar6.jpg" />
                           </q-avatar>
-                          <q-item-label class="text-center">
+                          <q-item-label class="q-pa-sm items-center">
                             George Fields
                           </q-item-label>
                         </q-card-section>
                       </div>
-                      <div class="col-2">
-                        <p>Reminder</p>
-                        <q-btn
-                          class="bottom"
-                          color="secondary"
-                          label="Secondary"
-                        />
+                      <div class="col-2 btn-section">
+                        <div class="text-center">
+                          <p>Call</p>
+                        </div>
+                        <div class="text-center">
+                          <button class="btn btn-secondary">
+                            completed
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </q-card-section>
@@ -58,20 +60,34 @@
                         <div>Due date: <span>December 23, 2018</span></div>
                         <q-card-section class="flex">
                           <q-avatar>
-                            <img src="https://cdn.quasar.dev/img/avatar6.jpg" />
+                            <img src="https://cdn.quasar.dev/img/avatar3.jpg" />
                           </q-avatar>
-                          <q-item-label class="text-center">
-                            George Fields
+                          <q-item-label class="q-pa-sm">
+                            Rebecca Moore
                           </q-item-label>
                         </q-card-section>
                       </div>
-                      <div class="col-2">
-                        <p>Call</p>
-                        <q-btn
-                          class="bottom"
-                          color="secondary"
-                          label="Secondary"
-                        />
+                      <div class="col-2 btn-section">
+                        <div class="text-center">
+                          <p>Call</p>
+                        </div>
+                        <div class="ended">
+                          <div>
+                            <q-radio keep-color v-model="color" color="teal" />
+                            <q-radio
+                              keep-color
+                              v-model="color"
+                              color="orange"
+                            />
+                          </div>
+                          <div>
+                            <q-icon name="mode_edit" />
+                            <q-icon name="delete" />
+                          </div>
+                          <button class="btn btn-danger">
+                            Ended
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </q-card-section>
@@ -86,18 +102,22 @@
                         <div>Due date: <span>December 23, 2018</span></div>
                         <q-card-section class="flex">
                           <q-avatar>
-                            <img src="https://cdn.quasar.dev/img/avatar6.jpg" />
+                            <img src="https://cdn.quasar.dev/img/avatar1.jpg" />
                           </q-avatar>
-                          <q-item-label class="text-center">
-                            George Fields
+                          <q-item-label class="q-pa-sm">
+                            Lindsey Stroud
                           </q-item-label>
                         </q-card-section>
                       </div>
-                      <div class="col-2">
-                        <p>Event</p>
-                        <q-btn class="bottom" color="secondary"
-                          >completed</q-btn
-                        >
+                      <div class="col-2 btn-section">
+                        <div>
+                          <p class="text-center">Event</p>
+                        </div>
+                        <div class="text-center">
+                          <button class="btn btn-secondary">
+                            completed
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </q-card-section>
@@ -118,14 +138,7 @@
 
             <q-separator inset></q-separator>
 
-            <q-card-section>
-              <IEcharts
-                ref="line"
-                :option="lineChartOption"
-                :resizable="true"
-                style="height:220px"
-              />
-            </q-card-section>
+            <q-card-section> </q-card-section>
           </q-card>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -138,13 +151,8 @@
 
             <q-separator inset></q-separator>
 
-            <q-card-section>
-              <apexchart
-                type="radialBar"
-                height="300"
-                :options="chartOptions"
-                :series="series"
-              />
+            <q-card-section> 
+              <linear></linear>
             </q-card-section>
           </q-card>
         </div>
@@ -154,129 +162,22 @@
 </template>
 
 <script>
-import Vue from "vue";
-import IEcharts from "vue-echarts-v3/src/full.js";
-
-Vue.component("IEcharts", IEcharts);
-import VueApexCharts from "vue-apexcharts";
-Vue.use(VueApexCharts);
-
-Vue.component("apexchart", VueApexCharts);
 
 export default {
+  components: {
+    linear: require("components/Chats/LinearChat.vue").default
+  
+  },
+
   data() {
     return {
+      color: "cyan",
       date: "2019/02/01",
       progress: 0.75,
-      series: [60],
-      chartOptions: {
-        chart: {
-          toolbar: {
-            show: false
-          }
-        },
-        title: {
-          text: "",
-          align: "left",
-          style: {
-            color: ""
-          }
-        },
-        plotOptions: {
-          radialBar: {
-            startAngle: -135,
-            endAngle: 225,
-            hollow: {
-              margin: 0,
-              size: "80%",
-              background: "#fff",
-              dropShadow: {
-                enabled: true,
-                top: 3,
-                left: 0,
-                blur: 4,
-                opacity: 0.24
-              }
-            },
-            track: {
-              background: "green",
-              strokeWidth: "67%",
-              margin: 0,
-              dropShadow: {
-                enabled: true,
-                top: -3,
-                left: 0,
-                blur: 4,
-                opacity: 0.35
-              }
-            },
-            dataLabels: {
-              name: {
-                show: false
-              },
-              value: {
-                formatter: function(val) {
-                  return val + "%";
-                },
-                color: "green",
-                fontSize: "36px",
-                show: true,
-                offsetY: 13
-              }
-            }
-          }
-        },
-        stroke: {
-          lineCap: "round"
-        }
-      }
+      series: [60]
     };
   },
-  computed: {
-    lineChartOption() {
-      return {
-        grid: {
-          bottom: "20%",
-          left: "15%",
-          top: "3%"
-        },
-        legend: {
-          bottom: 0,
-          textStyle: {
-            color: this.$q.dark.isActive ? "white" : "#676767"
-          }
-        },
-        dataset: {
-          dimensions: ["date", "deals"],
-          source: [
-            { date: "1 Dec", deals: 20 },
-            { date: "8 Dec", deals: 22 },
-            { date: "31 Dec", deals: 40 }
-          ]
-        },
-        stroke: {
-          curve: "smooth",
-        },
-        xAxis: {
-          type: "category",
-          axisLabel: {
-            color: this.$q.dark.isActive ? "white" : "#676767"
-          }
-        },
-        // yAxis: {
-        //   axisLabel: {
-        //     formatter: function(value, index) {
-        //       return value;
-        //     },
-        //     color: this.$q.dark.isActive ? "white" : "#676767"
-        //   }
-        //},
-        series: [{
-          data: [0, 50, 100, 150, 200, 250]
-        }]
-      };
-    }
-  },
+
   methods: {
     randomize() {
       this.progress = Math.random();
@@ -285,4 +186,43 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  background: #333;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: #109cf1;
+  color: #fff;
+}
+
+.btn-secondary {
+  background: #26a69a;
+  color: #fff;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.btn-danger {
+  background: #f7685b;
+  color: #fff;
+}
+
+.btn-section {
+  display: grid;
+}
+
+.ended {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+</style>

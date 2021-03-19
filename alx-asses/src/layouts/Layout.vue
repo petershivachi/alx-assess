@@ -2,15 +2,11 @@
   <div class="q-pa-md">
     <q-layout
       container
-      style="height: 850px"
+      style=" height: 850px"
       class="shadow-2 rounded-borders"
       view="hHh lpR fFf"
     >
-      <q-header
-        bordered
-        seperator
-        class="bg-white text-grey-8"
-      >
+      <q-header bordered seperator class="bg-white text-grey-8">
         <q-toolbar>
           <q-btn
             flat
@@ -23,8 +19,7 @@
           />
           <div style="max-width: 450px">
             <div>
-              <div>
-              </div>
+              <div></div>
               <q-input borderless v-model="search" placeholder="Global Search">
                 <template v-slot:append>
                   <q-icon name="search" />
@@ -50,32 +45,32 @@
         v-model="leftDrawerOpen"
         show-if-above
         bordered
-
         :mini="!leftDrawerOpen || miniState"
         @click.capture="drawerClick"
-        
         :width="256"
         :breakpoint="500"
         content-class="bg-grey-3"
       >
-        <q-scroll-area class="fit mini-slot cursor-pointer">
-          <q-list>
-            <q-item
-              class="q-py-lg"
-              :key="nav.id"
-              v-for="nav in navs"
-              :to="nav.to"
-              clickable
-            >
-              <q-item-section avatar>
-                <q-icon :name="nav.icon" />
-              </q-item-section>
-              <q-item-section>
-                <q-item-label>{{ nav.label }}</q-item-label>
-              </q-item-section>
-            </q-item>
-          </q-list>
-        </q-scroll-area>
+        <template>
+          <q-scroll-area class="fit mini-slot cursor-pointer">
+            <q-list>
+              <q-item
+                class="q-py-lg"
+                :key="nav.id"
+                v-for="nav in navs"
+                :to="nav.to"
+                clickable
+              >
+                <q-item-section avatar>
+                  <q-icon :name="nav.icon" />
+                </q-item-section>
+                <q-item-section>
+                  <q-item-label>{{ nav.label }}</q-item-label>
+                </q-item-section>
+              </q-item>
+            </q-list>
+          </q-scroll-area>
+        </template>
 
         <template v-slot:mini>
           <q-scroll-area class="fit">
@@ -131,7 +126,7 @@ export default {
   },
   data() {
     return {
-      leftDrawerOpen: true,
+      leftDrawerOpen: false,
       miniState: true,
       search: "",
       navs: [
@@ -178,9 +173,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
- .q-drawer {
-    .q-router-link--exact-active {
-      color: #109cf1 !important;
-    }
+.q-drawer {
+  .q-router-link--exact-active {
+    color: #109cf1 !important;
   }
+}
 </style>
