@@ -73,9 +73,10 @@
                         </div>
                         <div class="ended">
                           <div>
-                            <q-radio keep-color v-model="color" color="teal" />
+                            <q-radio  val="teal" keep-color v-model="color" color="teal" />
                             <q-radio
                               keep-color
+                               val="orange"
                               v-model="color"
                               color="orange"
                             />
@@ -138,21 +139,24 @@
 
             <q-separator inset></q-separator>
 
-            <q-card-section> </q-card-section>
+            <q-card-section> 
+              <linear></linear>
+            </q-card-section>
           </q-card>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
           <q-card flat bordered class="">
             <q-card-section class="row">
-              <div class="text-h6 col-12">
-                Tasks
+              <div class="text-h6 flex">
+                  Tasks
               </div>
+               <select class="float-right"></select>
             </q-card-section>
 
             <q-separator inset></q-separator>
 
-            <q-card-section> 
-              <linear></linear>
+            <q-card-section class="item-center"> 
+             <radial></radial>
             </q-card-section>
           </q-card>
         </div>
@@ -163,10 +167,12 @@
 
 <script>
 
+
 export default {
   components: {
-    linear: require("components/Chats/LinearChat.vue").default
-  
+    linear: require("components/Chats/LinearChat.vue").default,
+    radial: require("components/Chats/PieChart").default,
+    select: require("components/Select/Select").default
   },
 
   data() {
