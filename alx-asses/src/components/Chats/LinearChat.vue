@@ -26,23 +26,36 @@ export default {
     return {
       options: {
         chart: {
-          id: "linear-graph"
+          id: "linear-graph",
+          height: 350,
+          stacked: true
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          curve: "smooth"
+        },
+        colors: ["#008FFB"],
+        fill: {
+          type: "gradient",
+          gradient: {
+            opacityFrom: 0.6,
+            opacityTo: 0.8
+          }
+        },
+        legend: {
+          position: "top",
+          horizontalAlign: "left"
+        },
+        tooltip: {
+          enabled: false
         },
         xaxis: {
           categories: ["1 Dec", "8 Dec", "16 Dec", "31 Dec"]
         }
       },
-      dataLabels: {
-        enabled: false
-      },
-      stroke: {
-        show: true,
-        curve: ['smooth', 'straight', 'stepline'],
-        lineCap: "butt",
-        colors: undefined,
-        width: 2,
-        dashArray: 0
-      },
+
       series: [
         {
           name: "series-1",
