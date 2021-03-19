@@ -150,7 +150,7 @@
               <div class="text-h6 flex">
                   Tasks
               </div>
-               <select class="float-right"></select>
+              
             </q-card-section>
 
             <q-separator inset></q-separator>
@@ -172,7 +172,7 @@ export default {
   components: {
     linear: require("components/Chats/LinearChat.vue").default,
     radial: require("components/Chats/PieChart").default,
-    select: require("components/Select/Select").default
+    selectItem: require("components/Select/Select").default
   },
 
   data() {
