@@ -38,3 +38,5 @@ See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
 #### Dashboard Page
 ![dashboard1](https://user-images.githubusercontent.com/58518220/111871485-63aab480-899b-11eb-880b-a82cf4500c74.png)
 
+![dashboard2](https://user-images.githubusercontent.com/58518220/111871633-43c7c080-899c-11eb-89c9-2b13c6830381.png)
+
