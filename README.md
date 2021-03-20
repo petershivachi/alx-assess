@@ -34,3 +34,7 @@ See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
 
 #### Contacts Page Responsive
 ![contacts4](https://user-images.githubusercontent.com/58518220/111699046-a6a84300-8848-11eb-8ecc-36ffcc087a84.png)
+
+#### Dashboard Page
+![dashboard1](https://user-images.githubusercontent.com/58518220/111871485-63aab480-899b-11eb-880b-a82cf4500c74.png)
+
