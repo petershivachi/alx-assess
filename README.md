@@ -28,6 +28,8 @@ See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
 #### Contacts Page 
 ![contacts5](https://user-images.githubusercontent.com/58518220/111698765-4a452380-8848-11eb-988d-27a3c069fe6e.png)
 
+![contact7](https://user-images.githubusercontent.com/58518220/111871437-247c6380-899b-11eb-9e61-16d075a98373.png)
+
 ![contacts1](https://user-images.githubusercontent.com/58518220/111697922-3f3dc380-8847-11eb-873d-7c5ba09c243a.png)
 
 #### Contacts Page Responsive
